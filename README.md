@@ -13,7 +13,7 @@ A code repository for deploying distilled versions of DeepSeek-R1 on Bedrock as 
 
 ## 🏗️ Architecture
 
-![️Arch](./assets/arch.png)
+![arch](https://github.com/user-attachments/assets/e4d15676-75de-43b7-9b91-4b31a9826c4d)
 
 ## 🚀 Deployment Methods
 
@@ -25,51 +25,51 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
 
 1. **Download the model**: The first step is to download the model you want to deploy (in our case the [DeepSeek R1 Distill Llama 8B model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B)) from HuggingFace on our local machine or directly on a SageMaker Notebook.
 
-   ![Model Card](./assets/deepseek_hf.png)
+   ![deepseek_hf](https://github.com/user-attachments/assets/8907aa32-d7b8-47ef-8b75-f52d1d1a6b6d)
    **The model card for the DeepSeek R1 Distill Llama 8B model on HuggingFace**
 
-   ![Files for Download](./assets/deepseek_hf_files.png)
+   ![deepseek_hf_files](https://github.com/user-attachments/assets/4815d360-f730-48e3-ae13-1d27006d9a98)
    **The files to download for the DeepSeek R1 Distill Llama 8B model on HuggingFace**
 
 2. **Create an S3 bucket**: The next step is to create an S3 bucket on AWS to store the model files. This bucket will be used to import the model to AWS Bedrock.
 
-   ![Console AWS](./assets/aws_console.png)
+   ![aws_console](https://github.com/user-attachments/assets/86519edb-a1ed-4108-96e4-52d2348c5037)
    **Log in to the AWS Management Console.**
 
-   ![S3 Bucket](./assets/s3_bucket.png)
+   ![s3_bucket](https://github.com/user-attachments/assets/fb5e2898-b90d-4437-8a31-81ab5f209b55)
    **Navigate to the S3 service and click on `Create bucket`**
 
-   ![Create Bucket](./assets/s3_creation.png)
+   ![s3_creation](https://github.com/user-attachments/assets/a1d7ab7e-45d6-49a3-99c9-a24bf94b2f8c)
    **Enter all the necessary details and click on `Create bucket`**
 
-   ![Upload Model Bucket](./assets/s3_upload.png)
+   ![s3_upload](https://github.com/user-attachments/assets/1ed5652b-1d24-49df-b448-3997339848a0)
    **Upload the downloaded model files to this bucket**
 
 3. **Create an IAM role**: The next step is to create an IAM role with the necessary permissions to access the S3 bucket and Bedrock services.
 
-   ![IAM Role](./assets/iam_role.png)
+   ![iam_role](https://github.com/user-attachments/assets/6ba77d32-65fd-4d02-81aa-d0351b75161b)
    **Navigate to the IAM service in the AWS Management Console**
 
-   ![Create Role](./assets/iam_create_role.png)
+   ![iam_create_role](https://github.com/user-attachments/assets/967afae0-9cd0-47e5-93ea-6dd9b447626f)
    **Click on `Create role`**
 
-   ![Role Details](./assets/iam_role_details.png)
+   ![iam_role_details](https://github.com/user-attachments/assets/aa3d6512-6447-4a1c-87d0-82583e90a53a)
    **Fill in the necessary details and attach the required policies**
 
 4. **Import the model in Bedrock**: The final step is to import the model to AWS Bedrock using the AWS Management Console.
 
-   ![Bedrock Import](./assets/bedrock_import.png)
+   ![bedrock_import](https://github.com/user-attachments/assets/a9c2fa66-0c39-4be8-a485-56ee5c76ca46)
    **Navigate to the AWS Bedrock service in the AWS Management Console**
 
-   ![Import Model](./assets/bedrock_import_model.png)
+   ![bedrock_import_model](https://github.com/user-attachments/assets/fa27bfb5-f2d4-4cb4-aebe-9be568d54dfa)
    **Click on `Import Model`**
 
-   ![Model Details](./assets/bedrock_model_details.png)
+   ![bedrock_model_details](https://github.com/user-attachments/assets/5148def2-bd29-4884-94f4-a7617be20bd4)
    **Fill in the necessary details and click on `Import`**
 
 After following these steps, the model will be imported to AWS Bedrock and you can start using it for inference.
 
-![Inference](./assets/inference.png)
+![inference](https://github.com/user-attachments/assets/f000b4cd-89f5-4306-a848-e40add123c2e)
 
 ### 👨🏻‍💻 Code Approach with boto3
 
