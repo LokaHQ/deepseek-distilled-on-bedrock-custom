@@ -157,7 +157,7 @@ This method involves using code to deploy the DeepSeek models(or any other Open 
 - Adjust the parameters such as `temperature`, `max_tokens`, and `top_p` as needed for your specific use case.
 - Bedrock currently works only with DeepSeek Models based on Llama architecture.
 
-## 📂 Directory Structure
+## 📂 Repo Structure
 
 ```
 .
