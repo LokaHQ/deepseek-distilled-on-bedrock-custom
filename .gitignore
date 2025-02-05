@@ -17,3 +17,6 @@ venv/
 
 # Model directory
 models/
+
+# Results directory
+results/
