@@ -13,7 +13,7 @@ A code repository for deploying distilled versions of DeepSeek-R1 on Bedrock as 
 
 ## 🏗️ Architecture
 
-![arch](https://github.com/user-attachments/assets/e4d15676-75de-43b7-9b91-4b31a9826c4d)
+![arch](https://github.com/user-attachments/assets/3e8021ec-7255-4640-8f35-15a66c67a7ee)
 
 ## 🚀 Deployment Methods
 
@@ -23,7 +23,7 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
 
 #### Steps
 
-1. **Download the model**: The first step is to download the model you want to deploy (in our case the [DeepSeek R1 Distill Llama 8B model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B)) from HuggingFace on our local machine or directly on a SageMaker Notebook.
+1. **Download the model**: The first step is to download the model you want to deploy (in our case the [DeepSeek R1 Distill Llama 8B model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B) or [DeepSeek R1 Distill Llama 70B model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B)) from HuggingFace on our local machine or directly on a SageMaker Notebook.
 
    ![deepseek_hf](https://github.com/user-attachments/assets/8907aa32-d7b8-47ef-8b75-f52d1d1a6b6d)
    **The model card for the DeepSeek R1 Distill Llama 8B model on HuggingFace**
@@ -31,7 +31,13 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
    ![deepseek_hf_files](https://github.com/user-attachments/assets/4815d360-f730-48e3-ae13-1d27006d9a98)
    **The files to download for the DeepSeek R1 Distill Llama 8B model on HuggingFace**
 
-2. **Create an S3 bucket**: The next step is to create an S3 bucket on AWS to store the model files. This bucket will be used to import the model to AWS Bedrock.
+    ![image](https://github.com/user-attachments/assets/de884b5d-570e-4dda-b9dd-0ede4bb16a69)
+   **The model card for the DeepSeek R1 Distill Llama 70B model on HuggingFace**
+
+   ![image](https://github.com/user-attachments/assets/233e9c83-d521-4888-93d4-48094a944584)
+   **The files to download for the DeepSeek R1 Distill Llama 70B model on HuggingFace**
+
+1. **Create an S3 bucket**: The next step is to create an S3 bucket on AWS to store the model files. This bucket will be used to import the model to AWS Bedrock.
 
    ![aws_console](https://github.com/user-attachments/assets/86519edb-a1ed-4108-96e4-52d2348c5037)
    **Log in to the AWS Management Console.**
@@ -45,7 +51,7 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
    ![s3_upload](https://github.com/user-attachments/assets/1ed5652b-1d24-49df-b448-3997339848a0)
    **Upload the downloaded model files to this bucket**
 
-3. **Create an IAM role**: The next step is to create an IAM role with the necessary permissions to access the S3 bucket and Bedrock services.
+2. **Create an IAM role**: The next step is to create an IAM role with the necessary permissions to access the S3 bucket and Bedrock services.
 
    ![iam_role](https://github.com/user-attachments/assets/6ba77d32-65fd-4d02-81aa-d0351b75161b)
    **Navigate to the IAM service in the AWS Management Console**
@@ -56,7 +62,7 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
    ![iam_role_details](https://github.com/user-attachments/assets/aa3d6512-6447-4a1c-87d0-82583e90a53a)
    **Fill in the necessary details and attach the required policies**
 
-4. **Import the model in Bedrock**: The final step is to import the model to AWS Bedrock using the AWS Management Console.
+3. **Import the model in Bedrock**: The final step is to import the model to AWS Bedrock using the AWS Management Console.
 
    ![bedrock_import](https://github.com/user-attachments/assets/a9c2fa66-0c39-4be8-a485-56ee5c76ca46)
    **Navigate to the AWS Bedrock service in the AWS Management Console**
