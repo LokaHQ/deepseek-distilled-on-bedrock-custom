@@ -62,7 +62,7 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
    ![iam_role_details](https://github.com/user-attachments/assets/aa3d6512-6447-4a1c-87d0-82583e90a53a)
    **Fill in the necessary details and attach the required policies**
 
-3. **Import the model in Bedrock**: The final step is to import the model to AWS Bedrock using the AWS Management Console.
+3. **Import the model in Bedrock**: The next step is to import the model to AWS Bedrock using the AWS Management Console.
 
    ![bedrock_import](https://github.com/user-attachments/assets/a9c2fa66-0c39-4be8-a485-56ee5c76ca46)
    **Navigate to the AWS Bedrock service in the AWS Management Console**
@@ -73,9 +73,14 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
    ![bedrock_model_details](https://github.com/user-attachments/assets/5148def2-bd29-4884-94f4-a7617be20bd4)
    **Fill in the necessary details and click on `Import`**
 
-After following these steps, the model will be imported to AWS Bedrock and you can start using it for inference.
+4. **Run Inference**: After the model is imported, you can run inference using the AWS Bedrock service.
 
-![inference](https://github.com/user-attachments/assets/f000b4cd-89f5-4306-a848-e40add123c2e)
+    ![inference](https://github.com/user-attachments/assets/f000b4cd-89f5-4306-a848-e40add123c2e)
+
+5. **Delete the Model**: The final step is to delete the model from AWS Bedrock once you are done using it.
+
+    ![delete](https://github.com/user-attachments/assets/da77c138-9227-4e94-b8e5-f053eb703460)
+
 
 ### 👨🏻‍💻 Code Approach with boto3
 
@@ -138,10 +143,10 @@ This method involves using code to deploy the DeepSeek models(or any other Open 
 
 #### Deployment Steps & Testing
 
-1. **Download and Deploy the Model**:
-    - Run the `./scripts/download_model_n_deploy.py` script to download the model from Hugging Face Hub, upload it to S3, and deploy it to Amazon Bedrock.
+1. **Deploy the Model**:
+    - Run the `./scripts/deploy.py` script to download the model from Hugging Face Hub, upload it to S3, and deploy it to Amazon Bedrock.
     ```bash
-    uv run ./scripts/download_model_n_deploy.py --hf_model_id <HF-MODEL-ID> --bucket_name <S3-BUCKET-NAME> --s3_prefix <S3-PREFIX> --local_directory <LOCAL-DIRECTORY> --job_name <CMI-JOB-NAME> --imported_model_name <CMI-MODEL-NAME> --role_arn <IAM-ROLE-ARN> --region_info <AWS-REGION>
+    uv run ./scripts/deploy.py --hf_model_id <HF-MODEL-ID> --bucket_name <S3-BUCKET-NAME> --s3_prefix <S3-PREFIX> --local_directory <LOCAL-DIRECTORY> --job_name <CMI-JOB-NAME> --imported_model_name <CMI-MODEL-NAME> --role_arn <IAM-ROLE-ARN> --region_info <AWS-REGION>
     ```
 
 2. **Run Inference**:
@@ -154,6 +159,12 @@ This method involves using code to deploy the DeepSeek models(or any other Open 
     - You can also run benchmarking using the `./benchmark/benchmark.py` script.
     ```bash
     uv run ./benchmark/benchmark.py --model_id <MODEL-ID> --region_info <AWS-REGION> --temperature 0.3 --max_tokens 4096 --top_p 0.9 --max_retries 10 --cold_start_loops 2 --stat_loops 5 --output_dir <OUTPUT-DIR>
+    ```
+
+4. **Delete the Model**:
+    - To delete the model from AWS Bedrock, you can run the `./scripts/delete_model.py` script.
+    ```bash
+    uv run ./scripts/delete.py --model_id <MODEL-ID> --bucket_name <S3-BUCKET-NAME> --s3_prefix <S3-PREFIX> --region_info <AWS-REGION>
     ```
 
 ## 📝 Notes
@@ -170,7 +181,8 @@ This method involves using code to deploy the DeepSeek models(or any other Open 
 ├── benchmark
 │   └── benchmark.py
 ├── scripts
-│   ├── download_model_n_deploy.py
+│   ├── delete.py
+│   ├── deploy.py
 │   └── inference.py
 ├── .env.example
 ├── .gitignore
