@@ -79,7 +79,8 @@ This method allows you to deploy DeepSeek models on AWS Bedrock using the AWS Ma
 
 5. **Delete the Model**: The final step is to delete the model from AWS Bedrock once you are done using it.
 
-    ![delete_model](empty)
+    ![delete](https://github.com/user-attachments/assets/da77c138-9227-4e94-b8e5-f053eb703460)
+
 
 ### 👨🏻‍💻 Code Approach with boto3
 
