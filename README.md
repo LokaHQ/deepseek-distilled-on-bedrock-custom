@@ -13,7 +13,7 @@ A code repository for deploying distilled versions of DeepSeek-R1 on Bedrock as 
 
 ## 🏗️ Architecture
 
-![arch](https://github.com/user-attachments/assets/3e8021ec-7255-4640-8f35-15a66c67a7ee)
+![arch](https://github.com/user-attachments/assets/7efee675-05a2-40d8-b064-5e97aa2aac4e)
 
 ## 🚀 Deployment Methods
 
