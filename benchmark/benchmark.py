@@ -132,9 +132,8 @@ def generate(
             )
 
             result_body = json.loads(response["body"].read().decode("utf-8"))
-            result_headers = response["ResponseMetadata"]["HTTPHeaders"]
             logger.info("Response generated successfully")
-            return result_body, result_headers
+            return result_body
 
         except Exception as e:
             logger.error(f"Attempt {attempt + 1} failed: {str(e)}")
@@ -180,7 +179,7 @@ def measure_latency(
         )
     for _ in range(stat_loops):
         start_time = perf_counter()
-        response_body, response_header = generate(
+        response_body = generate(
             client, model_id, prompt, temperature, max_tokens, top_p, max_retries
         )
         latency = perf_counter() - start_time
@@ -198,12 +197,9 @@ def measure_latency(
         "time_p50_ms": time_p50_ms,
         "time_min_ms": time_min_ms,
         "time_max_ms": time_max_ms,
+        "response": response_body["generation"],
         "prompt_length": len(prompt),
-        "generation_token_count": response_body["generation_token_count"],
-        "prompt_token_count": response_body["prompt_token_count"],
-        "input_token_count": response_header["x-amzn-bedrock-input-token-count"],
-        "output_token_count": response_header["x-amzn-bedrock-output-token-count"],
-        "invocation_latency": response_header["x-amzn-bedrock-invocation-latency"],
+        "response_length": len(response_body["generation"]),
     }
 
 
